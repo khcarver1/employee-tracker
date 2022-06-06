@@ -45,7 +45,7 @@ questions();
 
 
 
-// module.exports = { questions };
-// const { viewAllEmp, addEmp, upEmp } = require('./lib/employee.js');
-// const { viewDep, addDep } = require('./lib/dept.js');
-// const { viewRoles, addRole } = require('./lib/role.js');
+module.exports = {questions};
+const { viewAllEmp, addEmp, upEmp } = require('./lib/employee.js');
+const { viewDep, addDep } = require('./lib/dept.js');
+const { viewRoles, addRole } = require('./lib/role.js');
