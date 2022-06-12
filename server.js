@@ -134,7 +134,7 @@ const addEmp = () => {
                 db.query(
                     `INSERT INTO employee (first_name, last_name, role_id)
                     VALUES (?,?,?)`,
-                    [data.first_name, data.last_name, data.role_pick, data.role_id],
+                    [data.first_name, data.last_name, data.role_id],
                     function (err) {
                         if (err) {
                             console.log(err.message)
