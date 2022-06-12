@@ -55,13 +55,11 @@ function viewDep() {
                 console.log(err.message);
                 return;
             }
-
             console.table(results);
             questions();
         }
     )
-}
-
+};
 function addDep() {
     inquirer
         .prompt({
@@ -87,9 +85,7 @@ function addDep() {
 };
 const viewAllEmp = () => {
     db.query(
-        `SELECT * FROM employee
-        LEFT JOIN role
-        ON employee.role.id = role.id`,
+        `SELECT * FROM employee`,
         function (err, results, fields) {
             if (err) {
                 console.log(err.message);
@@ -126,21 +122,21 @@ const addEmp = () => {
                 {
                     type: 'list',
                     name: 'role_pick',
-                    message: 'What will you employees role?',
+                    message: 'What is the employees role?',
                     choices: roleArr
                 },
                 {
                     type: 'input',
-                    name: 'mngt_pick',
-                    message: 'What will their manager ID be?',
+                    name: 'role_id',
+                    message: 'What is the employees role ID?'
                 }
             ]).then((data) => {
                 db.query(
-                    `INSERT INTO employee (first_name, last_name, role_id, manager_id)
-                    VALUES (?,?,?,?)`,
-                    [data.first_name,data.last_name,data.role_pick,data.mngt_pick],
+                    `INSERT INTO employee (first_name, last_name, role_id)
+                    VALUES (?,?,?)`,
+                    [data.first_name, data.last_name, data.role_pick, data.role_id],
                     function (err) {
-                        if(err){
+                        if (err) {
                             console.log(err.message)
                             return;
                         }
